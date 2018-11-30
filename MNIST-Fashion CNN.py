@@ -65,6 +65,7 @@ class CNNModel(nn.Module):
         #Fully Connected 1
         self.fc1 = nn.Linear(32*7*7, 10)
     
+    
     def forward(self, x):
         #Convolution 1
         out = self.cnn1(x)
@@ -90,6 +91,8 @@ class CNNModel(nn.Module):
         out = self.fc1(out)
         return out
 
+      
+      
 #Create instance of model
 model = CNNModel()
 

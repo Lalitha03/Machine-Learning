@@ -1,9 +1,9 @@
 #Importing libraries
 import torch
 import torchvision
-import torch.nn as nn
 import torchvision.transforms as transforms
 import torchvision.datasets as datasets
+import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
 

@@ -7,11 +7,13 @@ import torchvision.datasets as datasets
 import torch.nn.functional as F
 from torch.autograd import Variable
 
+
 #Initializing hyperparameters
 num_epochs = 10
 num_classes = 10
 batch_size = 100
 learning_rate = 0.001
+
 
 #Loading dataset
 transform = transforms.Compose([transforms.ToTensor(),
@@ -20,14 +22,13 @@ transform = transforms.Compose([transforms.ToTensor(),
 train_dataset = datasets.FashionMNIST(root='./data', 
                             train=True, 
                             download=True,
-                            transform=transform
-                            )
+                            transform=transform)
 
 test_dataset = datasets.FashionMNIST(root='./data', 
                            train=False, 
                            download=True,
-                           transform=transform
-                           )
+                           transform=transform)
+
 
 #Loading dataset into dataloader
 train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
@@ -37,6 +38,7 @@ train_loader = torch.utils.data.DataLoader(dataset=train_dataset,
 test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
                                           batch_size=batch_size, 
                                           shuffle=False)
+
 
 #Defining the network          
 class CNNModel(nn.Module):
@@ -86,7 +88,6 @@ class CNNModel(nn.Module):
         
         #Fully connected 1
         out = self.fc1(out)
-        
         return out
 
 #Create instance of model
@@ -97,6 +98,7 @@ criterion = nn.CrossEntropyLoss()
 
 #Create instance of optimizer (Adam)
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+
 
 #Train the model
 iter = 0
@@ -137,8 +139,8 @@ for epoch in range(num_epochs):
                   .format(epoch + 1, num_epochs, i + 1, len(train_loader), loss.item(),
                           (correct / total) * 100))
 
+            
 #Testing the model
-model.eval()  # eval mode (batchnorm uses moving mean/variance instead of mini-batch mean/variance)
 with torch.no_grad():
     correct = 0
     total = 0

@@ -9,7 +9,7 @@ from torch.autograd import Variable
 
 
 #Initializing hyperparameters
-num_epochs = 10
+num_epochs = 8
 num_classes = 10
 batch_size = 100
 learning_rate = 0.001
@@ -17,7 +17,7 @@ learning_rate = 0.001
 
 #Loading dataset
 transform = transforms.Compose([transforms.ToTensor(),
-                                transforms.Normalize((0.1307,), (0.3081,))])
+                                transforms.Normalize((0.13,), (0.30,))])
 
 train_dataset = datasets.FashionMNIST(root='./data', 
                             train=True, 

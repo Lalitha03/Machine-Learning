@@ -17,7 +17,7 @@ learning_rate = 0.001
 
 #Loading dataset
 transform = transforms.Compose([transforms.ToTensor(),
-                                transforms.Normalize((0.13,), (0.30,))])
+                                transforms.Normalize((0.5,), (0.5,))])
 
 train_dataset = datasets.FashionMNIST(root='./data', 
                             train=True, 

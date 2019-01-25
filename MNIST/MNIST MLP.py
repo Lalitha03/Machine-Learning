@@ -12,9 +12,7 @@ import matplotlib.pyplot as plt
 batch_size = 20
 
 # convert data to torch.FloatTensor
-transform = transforms.Compose([transforms.ToTensor(),
-                              transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
-                              ])
+transform = transforms.ToTensor()
 
 # choose the training and test datasets
 train_data = datasets.MNIST(root='data', train=True,

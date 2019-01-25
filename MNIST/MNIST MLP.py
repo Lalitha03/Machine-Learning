@@ -3,11 +3,11 @@ import torch
 import numpy as np
 from torchvision import datasets
 import torchvision.transforms as transforms
+import torch.nn as nn
+import torch.nn.functional as F
 import matplotlib.pyplot as plt
 %matplotlib inline
 
-# number of subprocesses to use for data loading
-num_workers = 0
 # how many samples per batch to load
 batch_size = 20
 
@@ -21,10 +21,8 @@ test_data = datasets.MNIST(root='data', train=False,
                                   download=True, transform=transform)
 
 # prepare data loaders
-train_loader = torch.utils.data.DataLoader(train_data, batch_size=batch_size,
-    num_workers=num_workers)
-test_loader = torch.utils.data.DataLoader(test_data, batch_size=batch_size, 
-    num_workers=num_workers)
+train_loader = torch.utils.data.DataLoader(train_data, batch_size=batch_size)
+test_loader = torch.utils.data.DataLoader(test_data, batch_size=batch_size)
     
 # obtain one batch of training images
 dataiter = iter(train_loader)
@@ -40,9 +38,6 @@ for idx in np.arange(20):
     # .item() gets the value contained in a Tensor
     ax.set_title(str(labels[idx].item()))
     
-import torch.nn as nn
-import torch.nn.functional as F
-
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
@@ -65,7 +60,6 @@ class Net(nn.Module):
 
 # initialize the NN
 model = Net()
-print(model)
 
 # specify loss function
 criterion = nn.CrossEntropyLoss()

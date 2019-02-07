@@ -23,7 +23,7 @@ char2int = {ch: ii for ii, ch in int2char.items()}
 # Encode the text
 encoded = np.array([char2int[ch] for ch in text])
 
-# Whowing the first 100 encoded characters
+# Showing the first 100 encoded characters
 encoded[:100]
 
 # Defining method to encode one hot labels
